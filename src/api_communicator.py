@@ -36,7 +36,7 @@ def determine_model_type(model_name: str) -> Literal["openai"] | Literal["anthro
     Returns:
         str: Тип модели ('openai', 'anthropic', и т.д.)
     """
-    if model_name.startswith(("gpt-", "llama", "mistral", "mixtral")):
+    if model_name.startswith(("gpt-", "llama", "mistral", "mixtral", "o")):
         model_type = "openai"
     elif model_name.startswith("claude-"):
         model_type = "anthropic"

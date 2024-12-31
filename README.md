@@ -59,7 +59,7 @@ ai: [Ответ модели с сравнением двух изображен
 ## Поддерживаемые модели
 FileBasedaiChat поддерживает следующие модели:
 
-- **Openai**: GPT-3.5-turbo, GPT-3.5-turbo-16k, GPT-4, GPT-4o.
+- **Openai**: GPT-3.5-turbo, GPT-3.5-turbo-16k, GPT-4, GPT-4o, o1, o1-preview.
 - **Anthropic**: Claude 3 Opus, Claude 3 Sonnet, Claude 3 Haiku (с поддержкой изображений).
 
 ### Модели с GPT-like API

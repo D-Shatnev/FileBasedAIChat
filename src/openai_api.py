@@ -56,11 +56,17 @@ def openai_send_request_to_model(
     openai.api_base = api_base
 
     try:
-        response = openai.ChatCompletion.create(model=model, messages=messages, temperature=temperature, stream=True)
+        if model.startswith("o"):
+            response = openai.ChatCompletion.create(model=model, messages=messages)
+            yield response["choices"][0]["message"]["content"]
+        else:
+            response = openai.ChatCompletion.create(
+                model=model, messages=messages, temperature=temperature, stream=True
+            )
 
-        for chunk in response:
-            if "content" in chunk["choices"][0]["delta"]:
-                yield chunk["choices"][0]["delta"]["content"]
+            for chunk in response:
+                if "content" in chunk["choices"][0]["delta"]:
+                    yield chunk["choices"][0]["delta"]["content"]
 
     except RateLimitError:
         print("Превышен лимит запросов к API OpenAI. Пожалуйста, попробуйте позже.")

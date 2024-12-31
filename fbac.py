@@ -1,8 +1,8 @@
 import argparse
-from src.dialog_manager import parse_dialog_file, append_ai_response_to_dialog, check_or_create_dialog_file
-from src.api_communicator import communicate_with_ai_model
+from src import append_ai_response_to_dialog, check_or_create_dialog_file, communicate_with_ai_model, parse_dialog_file
 
-def main():
+
+def main() -> None:
     """
     Основная точка входа в приложение FileBasedAIChat.
 
@@ -22,8 +22,8 @@ def main():
     по умолчанию. Если файл существует, программа приступит к обработке существующего диалога.
     """
     parser = argparse.ArgumentParser(description="Обработка файла диалога для FileBasedAIChat.")
-    parser.add_argument('file_path', type=str, help="Путь к файлу диалога.")
-    args = parser.parse_args()
+    parser.add_argument("file_path", type=str, help="Путь к файлу диалога.")
+    args: argparse.Namespace = parser.parse_args()
 
     try:
         if check_or_create_dialog_file(args.file_path):
@@ -43,5 +43,6 @@ def main():
     except Exception as e:
         print(f"Произошла непредвиденная ошибка: {e}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
